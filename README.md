@@ -1,2 +1,44 @@
 # real-favicon-webpack-plugin
-Webpack plugin for https://github.com/RealFaviconGenerator
+
+Generate favicons using [https://github.com/RealFaviconGenerator](RealFaviconGenerator) as part of your Webpack build process.
+
+
+## Install
+
+```
+yarn add --dev real-favicon-webpack-plugin
+```
+
+```
+npm i --save-dev real-favicon-webpack-plugin
+```
+
+
+## Usage
+
+In your Webpack config:
+
+**webpack.config.js**
+
+```
+const RealFaviconPlugin = require('real-favicon-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new RealFaviconPlugin({
+      faviconJson: 'favicon.json',
+      outputPath: 'dist/assets/favicons'
+    })
+  ]
+}
+```
+
+The options are:
+
+* `faviconJson` (required): the path to a JSON configuration file from the [https://realfavicongenerator.net](RFG website)
+* `outputPath` (required): the path where the plugin will output the favicon files generated from your config
+
+
+### Generated files
+
+The plugin will generate files based on your configuration file. Generally these will include one or more favicon images, and possibly some browser- or device-specific files such as `browserconfig.xml` for IE11.
