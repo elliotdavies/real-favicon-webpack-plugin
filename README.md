@@ -20,7 +20,7 @@ In your Webpack config:
 
 **webpack.config.js**
 
-```
+```js
 const RealFaviconPlugin = require('real-favicon-webpack-plugin');
 
 module.exports = {
