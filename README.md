@@ -27,7 +27,8 @@ module.exports = {
   plugins: [
     new RealFaviconPlugin({
       faviconJson: 'favicon.json',
-      outputPath: 'dist/assets/favicons'
+      outputPath: 'dist/assets/favicons',
+      inject: true
     })
   ]
 }
@@ -37,6 +38,10 @@ The options are:
 
 * `faviconJson` (required): the path to a JSON configuration file from the [RFG website](https://realfavicongenerator.net)
 * `outputPath` (required): the path where the plugin will output the favicon files generated from your config
+* `inject` (optional): if `true`, hooks into [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin) to inject `<link>` tags for your favicons into your HTML
+
+
+Note that the `inject` option requires you to be using `html-webpack-plugin@next`. It also requires you to have set `settings.htmlCodeFile: true` in your `faviconJson` configuration file (the "Generate `html_code.html`" option when generating the configuration on the RFG website).
 
 
 ### Generated files
