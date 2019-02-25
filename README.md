@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/real-favicon-webpack-plugin.svg)](https://badge.fury.io/js/real-favicon-webpack-plugin)
+
 # real-favicon-webpack-plugin
 
 Generate favicons using [RealFaviconGenerator](https://github.com/RealFaviconGenerator) as part of your Webpack build process.
