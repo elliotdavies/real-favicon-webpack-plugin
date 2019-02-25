@@ -1,5 +1,6 @@
 const rfg = require("rfg-api").init();
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const pluginName = "RealFaviconPlugin";
 
@@ -36,19 +37,22 @@ class RealFaviconPlugin {
 
       const request = rfg.createRequest(opts);
 
-      // Hook into https://webpack.js.org/api/compilation-hooks#additionalassets
-      compilation.hooks.additionalAssets.tapAsync(pluginName, cb => {
-        rfg.generateFavicon(request, this.options.outputPath, (err, res) => {
-          if (err) return cb(err);
+      // Hook into https://github.com/jantimon/html-webpack-plugin#beforeemit-hook
+      // as provided by html-webpack-plugin
+      HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
+        pluginName,
+        (data, cb) => {
+          if (!this.options.inject) return cb(null, data);
 
-          const html = res.favicon.html_code;
-          compilation.assets["favicons.html"] = {
-            source: () => html,
-            size: () => html.length
-          };
-          cb();
-        });
-      });
+          rfg.generateFavicon(request, this.options.outputPath, (err, res) => {
+            if (err) return cb(err);
+
+            data.html = data.html.replace("</head>", res.favicon.html_code + "</head>");
+
+            cb(null, data);
+          });
+        }
+      );
     });
   }
 }
