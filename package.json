@@ -1,15 +1,16 @@
 {
   "name": "real-favicon-webpack-plugin",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Generate favicons during Webpack's build process",
   "main": "index.js",
   "repository": "https://github.com/elliotdavies/real-favicon-webpack-plugin",
   "author": "Elliot Davies <elliot.a.davies@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "html-webpack-plugin": "^4.0.0-beta.5",
-    "rfg-api": "^0.5.0"
+  "peerDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.7"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "rfg-api": "^0.5.0"
+  }
 }
