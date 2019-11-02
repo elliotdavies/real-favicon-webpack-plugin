@@ -1,6 +1,6 @@
 {
   "name": "real-favicon-webpack-plugin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Generate favicons during Webpack's build process",
   "main": "index.js",
   "repository": "https://github.com/elliotdavies/real-favicon-webpack-plugin",
